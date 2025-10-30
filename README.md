@@ -1,5 +1,5 @@
 # My-Cloud-projects
-Practical cloud engineering projects leveraging AWS and Azure ( From Beginner to Advanced).
+Practical cloud engineering projects leveraging AWS ( From Beginner to Advanced).
 
 # 1. AWS Billing Alerts Project
 
