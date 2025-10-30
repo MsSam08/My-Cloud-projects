@@ -11,7 +11,7 @@ This project showcases practical AWS cost-management techniques using native mon
 
 ---
 **Category:** AWS Cloud Engineering | Cost Monitoring | CloudWatch | SNS
-📘 **Read the full walkthrough on Medium:** [*https://medium.com/@euodiasam/monitoring-aws-costs-like-a-pro-setting-up-billing-alarms-with-amazon-cloudwatch-afeb6f159112*](#)
+📘 **Read the full walkthrough on Medium:** [*AWS Billing alerts*](https://medium.com/@euodiasam/monitoring-aws-costs-like-a-pro-setting-up-billing-alarms-with-amazon-cloudwatch-afeb6f159112)
 
  
 
