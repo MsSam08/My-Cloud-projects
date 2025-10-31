@@ -25,7 +25,7 @@ The project highlights **cloud automation, infrastructure-as-code, and practical
 **Level:** Beginner → Intermediate  
 **Category:** AWS Cloud Engineering | Databases | Automation
 
-📘 **Read the full walkthrough on Medium:** [*Deploying MySQL on AWS RDS with CLI*]([https://medium.com/@euodiasam/setting-up-a-mysql-database-instance-on-amazon-rds-using-aws-cli-xxxxxx](https://medium.com/@euodiasam/b113f2403336))
+📘 **Read the full walkthrough on Medium:** [*Deploying MySQL on AWS RDS with CLI*](https://medium.com/@euodiasam/setting-up-a-mysql-database-instance-on-amazon-rds-using-aws-cli-xxxxxx](https://medium.com/@euodiasam/b113f2403336)
 
 
 
