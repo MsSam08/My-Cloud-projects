@@ -29,7 +29,7 @@ The project highlights **cloud automation, infrastructure-as-code, and practical
 
 # 3. AWS CloudFormation Project
 
-This project demonstrates deploying AWS resources automatically using **AWS CloudFormation** — a service that enables **Infrastructure as Code (IaC)**.  
+This project demonstrates deploying AWS resources automatically using **AWS CloudFormation**, a service that enables **Infrastructure as Code (IaC)**.  
 The stack provisions an **Amazon S3 bucket** and a **DynamoDB table**, showcasing how to manage cloud infrastructure declaratively rather than manually.  
 After deployment, the stack is deleted to confirm CloudFormation’s ability to fully automate both **creation** and **cleanup**.
 
