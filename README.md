@@ -11,9 +11,9 @@ This project showcases practical AWS cost-management techniques using native mon
 
 **Level:** Beginner
 
-**Category:** AWS Cloud Engineering | Cost Monitoring |
-📘 **Read the full walkthrough on Medium:** [*AWS Billing alerts*](https://medium.com/@euodiasam/monitoring-aws-costs-like-a-pro-setting-up-billing-alarms-with-amazon-cloudwatch-afeb6f159112)
+**Category:** AWS Cloud Engineering | Cost Monitoring 
 ---
+📘 **Read the full walkthrough on Medium:** [*AWS Billing alerts*](https://medium.com/@euodiasam/monitoring-aws-costs-like-a-pro-setting-up-billing-alarms-with-amazon-cloudwatch-afeb6f159112)
 
  # 2. AWS CLI MySQL RDS Project
 
@@ -23,9 +23,8 @@ The project highlights **cloud automation, infrastructure-as-code, and practical
 
 **Level:** Beginner → Intermediate  
 **Category:** AWS Cloud Engineering | Databases | Automation
-
-📘 **Read the full walkthrough on Medium:** [*Deploying MySQL on AWS RDS with CLI*](https://medium.com/@euodiasam/setting-up-a-mysql-database-instance-on-amazon-rds-using-aws-cli-b113f2403336)
 ---
+📘 **Read the full walkthrough on Medium:** [*Deploying MySQL on AWS RDS with CLI*](https://medium.com/@euodiasam/setting-up-a-mysql-database-instance-on-amazon-rds-using-aws-cli-b113f2403336)
 
 # 3. AWS CloudFormation Project
 
@@ -35,7 +34,6 @@ After deployment, the stack is deleted to confirm CloudFormation’s ability to 
 
 **Level:** Beginner → Intermediate  
 **Category:** AWS Cloud Engineering | Infrastructure as Code | Automation  
-
-📘 Read the full walkthrough on Medium: [*Deploying DynamoBD and S3 using Cloudformation*](https://medium.com/@euodiasam/infrastructure-as-code-deploying-aws-resources-with-a-single-cloudformation-template-ab148c9ebfbc)
 ---
+📘 Read the full walkthrough on Medium: [*Deploying DynamoBD and S3 using Cloudformation*](https://medium.com/@euodiasam/infrastructure-as-code-deploying-aws-resources-with-a-single-cloudformation-template-ab148c9ebfbc)
 
