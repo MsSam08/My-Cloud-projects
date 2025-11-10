@@ -61,6 +61,14 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
 2. Authenticate Docker with ECR:
    ```
    aws ecr get-login-password --region ${AWS_REGION} \
-| docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
-```
+    | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+   ```
+3. Build, tag, and push the image:
+   ```
+   docker build -t ${REPO_NAME}:${IMAGE_TAG} .
+   docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
+   docker push ${ECR_URI}
+   ```
+   4. 
+   
 
