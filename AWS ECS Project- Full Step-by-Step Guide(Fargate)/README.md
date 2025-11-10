@@ -54,6 +54,13 @@ Why: ECS pulls images from Amazon ECR. You need to build your application image 
 
 CLI Steps
 
-Create the ECR repository:
-```aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
+1. Create the ECR repository:
 ```
+aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
+```
+2. Authenticate Docker with ECR:
+   ```
+   aws ecr get-login-password --region ${AWS_REGION} \
+| docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+```
+
