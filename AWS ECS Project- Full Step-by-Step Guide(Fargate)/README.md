@@ -1,4 +1,4 @@
-## AWS ECS Fargate Deployment Project ##
+# AWS ECS Fargate Deployment Project ##
 
 This project demonstrates deploying a Dockerized web application on AWS ECS using Fargate. Fargate allows you to run containers without managing EC2 instances. The project includes building and pushing Docker images, creating ECS task definitions, clusters, services, scaling, testing replacements, and cleaning up resources.
 Project Goal
@@ -19,7 +19,7 @@ The goal of this project is to demonstrate a complete containerized application 
 
 - Clean up all AWS resources to avoid costs
 
-# Prerequisites #
+### Prerequisites 
 
 Before starting, ensure you have:
 
@@ -48,10 +48,12 @@ SECURITY_GROUP="sg-0123456789abcdef0"
 ```
 *These variables will be reused throughout commands to simplify the workflow.*
 
-# Step 1: Build & Push Docker Image to ECR #
+### Step 1: Build & Push Docker Image to ECR #
 
 Why: ECS pulls images from Amazon ECR. You need to build your application image and push it so Fargate can run it.
 
 CLI Steps
 
 Create the ECR repository:
+```aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
+```
