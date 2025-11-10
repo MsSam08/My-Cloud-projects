@@ -40,7 +40,6 @@ After deployment, the stack is deleted to confirm CloudFormation’s ability to 
 
 This project demonstrates **auto scaling EC2 instances** on AWS using Auto Scaling Groups and Launch Templates.  
 It showcases how to dynamically adjust the number of EC2 instances based on demand, ensuring high availability and cost efficiency.  
-The project also includes monitoring via Amazon CloudWatch to trigger scaling policies automatically.
 
 **Level:** Beginner → Intermediate  
 **Category:** AWS Cloud Engineering | Auto scaling groups | Launch Template 
