@@ -97,7 +97,44 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
 
 Why: Task definitions define how your container runs: which image, CPU/memory, port mappings, logging, and network mode.
 
-1. Create CloudWatch log group:
+1. Create CloudWatch log group:aws logs create-log-group
+   ```
+   log-group-name /ecs/${REPO_NAME}
+   ```
+2. Task definition JSON (task-definition.json):
+   ```
+   {
+    "family": "my-app-task",
+   "networkMode": "awsvpc",
+   "requiresCompatibilities": ["FARGATE"],
+   "cpu": "256",
+   "memory": "512",
+   "executionRoleArn": "arn:aws:iam::123456789012:role/ecsTaskExecutionRole",
+   "containerDefinitions": [
+    {
+      "name": "my-app-container",
+      "image": "123456789012.dkr.ecr.us-east-1.amazonaws.com/my-app:v1",
+      "essential": true,
+      "portMappings": [{ "containerPort": 80, "protocol": "tcp" }],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/my-app",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
+    }
+   ]
+   }
+   ```
+3. Register the task definition:
+   ```
+   aws ecs register-task-definition --cli-input-json file://task-definition.json
+   ```
+
+
+   
 
    
 
