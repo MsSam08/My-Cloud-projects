@@ -69,6 +69,35 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
-   4. 
+### Step 2: Create ECS Task Execution Role
+
+Why: Fargate tasks need permissions to pull images from ECR and write logs to CloudWatch. The ecsTaskExecutionRole grants this.
+
+1. Create a trust policy (ecs-trust-policy.json):
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [{
+    "Effect": "Allow",
+    "Principal": {"Service": "ecs-tasks.amazonaws.com"},
+    "Action": "sts:AssumeRole"
+  }]
+}
+```
+2. Create the role and attach the managed policy:
+   ```
+   aws iam create-role --role-name ecsTaskExecutionRole --assume-role-policy-document file://ecs-trust-policy.json
+   aws iam attach-role-policy \
+    --role-name ecsTaskExecutionRole \
+    --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+   ```
+*Created mine in the AWS console*
+
+### Step 3: Create ECS Task Definition
+
+Why: Task definitions define how your container runs: which image, CPU/memory, port mappings, logging, and network mode.
+
+1. Create CloudWatch log group:
+
    
 
