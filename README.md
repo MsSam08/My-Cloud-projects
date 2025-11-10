@@ -36,3 +36,13 @@ After deployment, the stack is deleted to confirm CloudFormation’s ability to 
 **Category:** AWS Cloud Engineering | Infrastructure as Code | Automation  
 📘 Read the full walkthrough on Medium: [*Deploying DynamoBD and S3 using Cloudformation*](https://medium.com/@euodiasam/infrastructure-as-code-deploying-aws-resources-with-a-single-cloudformation-template-ab148c9ebfbc)
 
+# 4. AWS Auto Scaling Project
+
+This project demonstrates **auto scaling EC2 instances** on AWS using Auto Scaling Groups and Launch Templates.  
+It showcases how to dynamically adjust the number of EC2 instances based on demand, ensuring high availability and cost efficiency.  
+The project also includes monitoring via Amazon CloudWatch to trigger scaling policies automatically.
+
+**Level:** Beginner → Intermediate  
+**Category:** AWS Cloud Engineering | Auto scaling groups | Launch Template 
+
+📘 Read the full walkthrough on Medium: [*Building a Self-Healing Architecture on AWS: Auto Scaling EC2 Instances Step by Step*](https://medium.com/@euodiasam/building-a-self-healing-architecture-on-aws-auto-scaling-ec2-instances-step-by-step-2913aa91c938)
