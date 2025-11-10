@@ -18,3 +18,31 @@ The goal of this project is to demonstrate a complete containerized application 
 - Scale service to more instances
 
 - Clean up all AWS resources to avoid costs
+
+# Prerequisites
+
+Before starting, ensure you have:
+
+- AWS CLI installed and configured with IAM permissions
+
+- Docker installed and running locally
+
+- AWS Account ID and preferred region
+
+- A basic application with a Dockerfile ready for deployment
+
+  Set Variables
+
+Set environment variables for convenience:
+```AWS_REGION="us-east-1"
+AWS_ACCOUNT_ID="123456789012"
+REPO_NAME="my-app"
+IMAGE_TAG="v1"
+ECR_URI="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/${REPO_NAME}:${IMAGE_TAG}"
+CLUSTER_NAME="my-app-cluster"
+SERVICE_NAME="my-app-service"
+TASK_FAMILY="my-app-task"
+DESIRED_COUNT=2
+SUBNETS="subnet-aaa,subnet-bbb"
+SECURITY_GROUP="sg-0123456789abcdef0"
+```
