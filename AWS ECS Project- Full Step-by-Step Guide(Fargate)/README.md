@@ -19,7 +19,7 @@ The goal of this project is to demonstrate a complete containerized application 
 
 - Clean up all AWS resources to avoid costs
 
-# Prerequisites
+# Prerequisites #
 
 Before starting, ensure you have:
 
@@ -46,3 +46,12 @@ DESIRED_COUNT=2
 SUBNETS="subnet-aaa,subnet-bbb"
 SECURITY_GROUP="sg-0123456789abcdef0"
 ```
+*These variables will be reused throughout commands to simplify the workflow.*
+
+# Step 1: Build & Push Docker Image to ECR #
+
+Why: ECS pulls images from Amazon ECR. You need to build your application image and push it so Fargate can run it.
+
+CLI Steps
+
+Create the ECR repository:
