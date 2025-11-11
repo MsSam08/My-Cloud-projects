@@ -47,7 +47,6 @@ SUBNETS="subnet-aaa,subnet-bbb"
 SECURITY_GROUP="sg-0123456789abcdef0"
 ```
 *These variables will be reused throughout commands to simplify the workflow.*
-![Step 0 docker](https://github.com/user-attachments/assets/11214a20-7f32-449f-bcc1-183dbd5ae9ba)
 
 ### Step 1: Build & Push Docker Image to ECR #
 
@@ -59,17 +58,23 @@ CLI Steps
 ```
 aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
 ```
+![Step 1 docker](https://github.com/user-attachments/assets/517f3175-23a0-42d9-ac49-86e4c4fde0f8)
+
 2. Authenticate Docker with ECR:
    ```
    aws ecr get-login-password --region ${AWS_REGION} \
     | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
    ```
+  ![Step 1b docker](https://github.com/user-attachments/assets/49626d7c-9234-434d-ad69-f04eb0079252)
+
 3. Build, tag, and push the image:
    ```
    docker build -t ${REPO_NAME}:${IMAGE_TAG} .
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
+![step 1c creating dockerfile](https://github.com/user-attachments/assets/d07bcd2a-6cba-4421-8533-ee00febb7a73)
+
 ### Step 2: Create ECS Task Execution Role
 
 Why: Fargate tasks need permissions to pull images from ECR and write logs to CloudWatch. The ecsTaskExecutionRole grants this.
