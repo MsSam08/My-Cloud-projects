@@ -136,6 +136,13 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    aws ecs register-task-definition --cli-input-json file://task-definition.json
    ```
    Console Alternative: ECS → Task Definitions → Create new → Fargate → paste JSON.
+### Step 4: Create ECS Cluster
+
+Why: A cluster is a logical grouping of tasks and services. Fargate handles compute resources automatically.
+  ```
+  aws ecs create-cluster --cluster-name ${CLUSTER_NAME}
+  ```
+Console Alternative: ECS → Clusters → Create → Networking only (Fargate).
 
 ### Step 5: Create ECS Service
 
