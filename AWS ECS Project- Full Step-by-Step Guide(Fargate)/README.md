@@ -74,7 +74,7 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
 Why: Fargate tasks need permissions to pull images from ECR and write logs to CloudWatch. The ecsTaskExecutionRole grants this.
 
 1. Create a trust policy (ecs-trust-policy.json):
-```
+  ```
 {
   "Version": "2012-10-17",
   "Statement": [{
@@ -83,7 +83,7 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
     "Action": "sts:AssumeRole"
   }]
 }
-```
+  ```
 2. Create the role and attach the managed policy:
    ```
    aws iam create-role --role-name ecsTaskExecutionRole --assume-role-policy-document file://ecs-trust-policy.json
@@ -132,7 +132,107 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    ```
    aws ecs register-task-definition --cli-input-json file://task-definition.json
    ```
+   Console Alternative: ECS → Task Definitions → Create new → Fargate → paste JSON.
 
+### Step 5: Create ECS Service
+
+Why: Services ensure a desired number of tasks are running, manage replacement, and can integrate with load balancers.
+  ```
+    aws ecs create-service \
+  --cluster ${CLUSTER_NAME} \
+  --service-name ${SERVICE_NAME} \
+  --task-definition ${TASK_FAMILY} \
+  --desired-count ${DESIRED_COUNT} \
+  --launch-type FARGATE \
+  --network-configuration "awsvpcConfiguration={subnets=[${SUBNETS}],securityGroups=[${SECURITY_GROUP}],assignPublicIp=ENABLED}"
+```
+Console Alternative: ECS → Cluster → Create → Service → Fargate → Networking → SG.
+
+Step 6: Verify Deployment
+
+- List running tasks:
+```
+aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
+```
+- Describe task for details and public IP:
+  ```
+  aws ecs describe-tasks --cluster ${CLUSTER_NAME} --tasks <task-arn>
+  ```
+- View logs in CloudWatch ``` /ecs/my-app```
+
+### Step 7: Test Task Replacement
+
+Why: ECS services automatically replace failed/stopped tasks. Test this by stopping one:
+  ```
+TASK_ARN=$(aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME} --query 'taskArns[0]' --output text)
+aws ecs stop-task --cluster ${CLUSTER_NAME} --task ${TASK_ARN} --reason "Testing replacement"
+```
+- ECS should launch a new task automatically.
+
+### Step 8: Scale Service
+  ```
+aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --desired-count 3
+```
+- Verify 3 running tasks using `` list-tasks``
+
+### FURTHER IMPROVEMENTS - OPTIONAL
+ **Step 9: Attach an Application Load Balancer**
+
+- Create ALB (internet-facing), target group (IP mode), and health checks.
+
+- Enable ALB in ECS service. ECS registers tasks automatically.
+
+- Security groups must allow HTTP traffic between ALB and tasks.
+  
+ **Step 10: Autoscaling
+
+- Set CloudWatch alarms based on CPU or request count.
+
+- Configure target tracking or step scaling on ECS service.
+
+  ### Cleanup
+
+Why: To avoid unnecessary AWS charges.
+  ```
+# Delete service
+aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --desired-count 0
+aws ecs delete-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --force
+
+# Deregister task definitions
+aws ecs list-task-definitions --family-prefix ${TASK_FAMILY}
+aws ecs deregister-task-definition --task-definition ${TASK_FAMILY}:1
+
+# Delete cluster
+aws ecs delete-cluster --cluster ${CLUSTER_NAME}
+
+# Delete ECR repository
+aws ecr delete-repository --repository-name ${REPO_NAME} --force
+
+# Delete IAM role (if created)
+aws iam detach-role-policy --role-name ecsTaskExecutionRole --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+aws iam delete-role --role-name ecsTaskExecutionRole
+
+# Delete ALB, target groups, security groups if created
+```
+### Quick Checklist
+
+- Build & push Docker image to ECR
+
+- Create ecsTaskExecutionRole (if needed)
+
+- Register task definition
+
+- Create ECS cluster
+
+- Create ECS service (desired count 2)
+
+- Stop a task → verify replacement
+
+- Scale desired count → 3
+
+- Optional: ALB & autoscaling
+
+- Cleanup resources
 
    
 
