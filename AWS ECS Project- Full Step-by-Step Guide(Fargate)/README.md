@@ -47,6 +47,7 @@ SUBNETS="subnet-aaa,subnet-bbb"
 SECURITY_GROUP="sg-0123456789abcdef0"
 ```
 *These variables will be reused throughout commands to simplify the workflow.*
+![Step 0 docker](https://github.com/user-attachments/assets/11214a20-7f32-449f-bcc1-183dbd5ae9ba)
 
 ### Step 1: Build & Push Docker Image to ECR #
 
