@@ -184,7 +184,7 @@ aws ecs update-service --cluster ${CLUSTER_NAME} --service ${SERVICE_NAME} --des
 
 - Security groups must allow HTTP traffic between ALB and tasks.
   
- **Step 10: Autoscaling
+ **Step 10: Autoscaling**
 
 - Set CloudWatch alarms based on CPU or request count.
 
@@ -226,9 +226,9 @@ aws iam delete-role --role-name ecsTaskExecutionRole
 
 - Create ECS service (desired count 2)
 
-- Stop a task → verify replacement
+- Stop a task to verify replacement
 
-- Scale desired count → 3
+- Scale desired count to 3
 
 - Optional: ALB & autoscaling
 
