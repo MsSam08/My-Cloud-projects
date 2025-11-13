@@ -66,6 +66,7 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    aws ecr get-login-password --region ${AWS_REGION} \
     | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
    ```
+![WhatsApp Image 2025-11-13 at 12 14 29 PM](https://github.com/user-attachments/assets/6acc6acb-fc17-4389-b48f-ce9f7d18b6da)
 
 3. Build, tag, and push the image:
    ```
@@ -73,6 +74,7 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
+![WhatsApp Image 2025-11-13 at 12 14 30 PM](https://github.com/user-attachments/assets/73f7bf30-4cba-4f8a-ab67-a1081c4fb89f)
 
 ### Step 2: Create ECS Task Execution Role
 
@@ -97,6 +99,7 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
     --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
    ```
 *Created mine in the AWS console*
+![WhatsApp Image 2025-11-13 at 12 14 30 PM(1)](https://github.com/user-attachments/assets/81d6768d-f14a-4050-9225-ace3e5111b63)
 
 ### Step 3: Create ECS Task Definition
 
@@ -133,17 +136,23 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    ]
    }
    ```
-3. Register the task definition:
+   *Edit the code to fit your account details*
+   ![WhatsApp Image 2025-11-13 at 12 14 30 PM(2)](https://github.com/user-attachments/assets/8fa5f3a6-28c9-48ea-89f0-ccaadb9a7985)
+
+4. Register the task definition:
    ```
    aws ecs register-task-definition --cli-input-json file://task-definition.json
    ```
    Console Alternative: ECS → Task Definitions → Create new → Fargate → paste JSON.
+   
 ### Step 4: Create ECS Cluster
 
 Why: A cluster is a logical grouping of tasks and services. Fargate handles compute resources automatically.
   ```
   aws ecs create-cluster --cluster-name ${CLUSTER_NAME}
   ```
+![WhatsApp Image 2025-11-13 at 12 14 30 PM(3)](https://github.com/user-attachments/assets/fbb1f5ea-f9ff-4044-8e3d-3449a2bb900e)
+
 Console Alternative: ECS → Clusters → Create → Networking only (Fargate).
 
 ### Step 5: Create ECS Service
@@ -159,6 +168,7 @@ Why: Services ensure a desired number of tasks are running, manage replacement, 
   --network-configuration "awsvpcConfiguration={subnets=[${SUBNETS}],securityGroups=[${SECURITY_GROUP}],assignPublicIp=ENABLED}"
 ```
 Console Alternative: ECS → Cluster → Create → Service → Fargate → Networking → SG.
+![WhatsApp Image 2025-11-13 at 12 14 31 PM](https://github.com/user-attachments/assets/9600e220-a47a-4523-9a04-42fbdad01cf7)
 
 Step 6: Verify Deployment
 
@@ -166,11 +176,17 @@ Step 6: Verify Deployment
 ```
 aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
 ```
+![WhatsApp Image 2025-11-13 at 12 14 32 PM](https://github.com/user-attachments/assets/f78be5d8-729d-46c9-b2e1-7520dac9599e)
+
 - Describe task for details and public IP:
   ```
   aws ecs describe-tasks --cluster ${CLUSTER_NAME} --tasks <task-arn>
   ```
+![WhatsApp Image 2025-11-13 at 12 14 32 PM(1)](https://github.com/user-attachments/assets/70607b65-7f70-469b-b63c-3b6171f9a540)
+ 
 - View logs in CloudWatch ``` /ecs/my-app```
+  ![WhatsApp Image 2025-11-13 at 12 14 34 PM](https://github.com/user-attachments/assets/e767a343-8ce3-4e2e-b723-47c2e52ce613)
+
 
 ### Step 7: Test Task Replacement
 
