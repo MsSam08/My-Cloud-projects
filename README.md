@@ -45,3 +45,10 @@ It showcases how to dynamically adjust the number of EC2 instances based on dema
 **Category:** AWS Cloud Engineering | Auto scaling groups | Launch Template 
 
 📘 Read the full walkthrough on Medium: [*Building a Self-Healing Architecture on AWS: Auto Scaling EC2 Instances Step by Step*](https://medium.com/@euodiasam/building-a-self-healing-architecture-on-aws-auto-scaling-ec2-instances-step-by-step-2913aa91c938)
+
+# 5. AWS ECS Fargate Deployment Project
+
+This project demonstrates deploying a Dockerized web application on AWS ECS using Fargate. Fargate allows you to run containers without managing EC2 instances. The project includes building and pushing Docker images, creating ECS task definitions, clusters, services, scaling, testing replacements, and cleaning up resources.
+
+**Level:** Intermediate
+📘 Read full walkthrough on Github and Medium: 
