@@ -111,7 +111,6 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    ```
    log-group-name /ecs/${REPO_NAME}
    ```
-   ![WhatsApp Image 2025-11-13 at 12 14 36 PM(1)](https://github.com/user-attachments/assets/32bf5277-2cfa-4296-84e3-e4a3b46fee9d)
 
 2. Task definition JSON (task-definition.json):
    ```
@@ -156,8 +155,8 @@ Why: A cluster is a logical grouping of tasks and services. Fargate handles comp
   ```
   aws ecs create-cluster --cluster-name ${CLUSTER_NAME}
   ```
-![WhatsApp Image 2025-11-13 at 12 14 30 PM(3)](https://github.com/user-attachments/assets/fbb1f5ea-f9ff-4044-8e3d-3449a2bb900e)
-
+![WhatsApp Image 2025-11-13 at 12 14 32 PM](https://github.com/user-attachments/assets/f78be5d8-729d-46c9-b2e1-7520dac9599e)
+ ![WhatsApp Image 2025-11-13 at 12 14 36 PM(1)](https://github.com/user-attachments/assets/32bf5277-2cfa-4296-84e3-e4a3b46fee9d)
 Console Alternative: ECS → Clusters → Create → Networking only (Fargate).
 
 ### Step 5: Create ECS Service
@@ -173,7 +172,7 @@ Why: Services ensure a desired number of tasks are running, manage replacement, 
   --network-configuration "awsvpcConfiguration={subnets=[${SUBNETS}],securityGroups=[${SECURITY_GROUP}],assignPublicIp=ENABLED}"
 ```
 Console Alternative: ECS → Cluster → Create → Service → Fargate → Networking → SG.
-![WhatsApp Image 2025-11-13 at 12 14 32 PM](https://github.com/user-attachments/assets/f78be5d8-729d-46c9-b2e1-7520dac9599e)
+![WhatsApp Image 2025-11-13 at 12 14 32 PM(1)](https://github.com/user-attachments/assets/70607b65-7f70-469b-b63c-3b6171f9a540)
 
 Step 6: Verify Deployment
 
@@ -186,7 +185,7 @@ aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
   ```
   aws ecs describe-tasks --cluster ${CLUSTER_NAME} --tasks <task-arn>
   ```
-![WhatsApp Image 2025-11-13 at 12 14 32 PM(1)](https://github.com/user-attachments/assets/70607b65-7f70-469b-b63c-3b6171f9a540)
+
  
 - View logs in CloudWatch ``` /ecs/my-app```
 
