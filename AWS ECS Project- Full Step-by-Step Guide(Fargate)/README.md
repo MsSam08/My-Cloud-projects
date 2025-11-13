@@ -141,12 +141,14 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    }
    ```
    *Edit the code to fit your account details*
- 
+ ![WhatsApp Image 2025-11-13 at 12 14 31 PM](https://github.com/user-attachments/assets/9600e220-a47a-4523-9a04-42fbdad01cf7)
+
 4. Register the task definition:
    ```
    aws ecs register-task-definition --cli-input-json file://task-definition.json
    ```
    Console Alternative: ECS → Task Definitions → Create new → Fargate → paste JSON.
+   ![WhatsApp Image 2025-11-13 at 12 14 34 PM](https://github.com/user-attachments/assets/e767a343-8ce3-4e2e-b723-47c2e52ce613)
    
 ### Step 4: Create ECS Cluster
 
@@ -171,7 +173,7 @@ Why: Services ensure a desired number of tasks are running, manage replacement, 
   --network-configuration "awsvpcConfiguration={subnets=[${SUBNETS}],securityGroups=[${SECURITY_GROUP}],assignPublicIp=ENABLED}"
 ```
 Console Alternative: ECS → Cluster → Create → Service → Fargate → Networking → SG.
-![WhatsApp Image 2025-11-13 at 12 14 31 PM](https://github.com/user-attachments/assets/9600e220-a47a-4523-9a04-42fbdad01cf7)
+![WhatsApp Image 2025-11-13 at 12 14 32 PM](https://github.com/user-attachments/assets/f78be5d8-729d-46c9-b2e1-7520dac9599e)
 
 Step 6: Verify Deployment
 
@@ -179,7 +181,6 @@ Step 6: Verify Deployment
 ```
 aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
 ```
-![WhatsApp Image 2025-11-13 at 12 14 32 PM](https://github.com/user-attachments/assets/f78be5d8-729d-46c9-b2e1-7520dac9599e)
 
 - Describe task for details and public IP:
   ```
@@ -188,7 +189,6 @@ aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
 ![WhatsApp Image 2025-11-13 at 12 14 32 PM(1)](https://github.com/user-attachments/assets/70607b65-7f70-469b-b63c-3b6171f9a540)
  
 - View logs in CloudWatch ``` /ecs/my-app```
-  ![WhatsApp Image 2025-11-13 at 12 14 34 PM](https://github.com/user-attachments/assets/e767a343-8ce3-4e2e-b723-47c2e52ce613)
 
 ![WhatsApp Image 2025-11-13 at 12 14 36 PM](https://github.com/user-attachments/assets/1e6cfb92-46c8-4a19-bc44-4af13953b9fa)
 
