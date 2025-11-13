@@ -51,4 +51,4 @@ It showcases how to dynamically adjust the number of EC2 instances based on dema
 This project demonstrates deploying a Dockerized web application on AWS ECS using Fargate. Fargate allows you to run containers without managing EC2 instances. The project includes building and pushing Docker images, creating ECS task definitions, clusters, services, scaling, testing replacements, and cleaning up resources.
 
 **Level:** Intermediate
-📘 Read full walkthrough on Github and Medium: 
+📘 Read full walkthrough on Github and Medium:[*Github*](https://github.com/MsSam08/My-Cloud-projects/tree/main/AWS%20ECS%20Project-%20Full%20Step-by-Step%20Guide(Fargate))
