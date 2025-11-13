@@ -74,6 +74,9 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
+*Before building, tagging, and pushing my image to Amazon ECR, I created a Dockerfile to define how my Python app runs inside a container. This ensures ECS Fargate can pull and run it correctly.*
+ ![WhatsApp Image 2025-11-13 at 12 14 35 PM](https://github.com/user-attachments/assets/1bc16641-6a32-4e80-a17b-34a44682e612)
+ 
  ![WhatsApp Image 2025-11-13 at 12 14 30 PM(3)](https://github.com/user-attachments/assets/75cc21e6-ec4d-4723-8729-5fc51dc9af24)
 
 ### Step 2: Create ECS Task Execution Role
@@ -100,8 +103,6 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
    ```
 *Created mine in the AWS console*
 ![WhatsApp Image 2025-11-13 at 12 14 36 PM(2)](https://github.com/user-attachments/assets/cda74053-0e95-4c69-ac85-b65ee5a92b8a)
-
-![WhatsApp Image 2025-11-13 at 12 14 35 PM](https://github.com/user-attachments/assets/1bc16641-6a32-4e80-a17b-34a44682e612)
 
 ### Step 3: Create ECS Task Definition
 
