@@ -74,7 +74,7 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
-![WhatsApp Image 2025-11-13 at 12 14 30 PM](https://github.com/user-attachments/assets/73f7bf30-4cba-4f8a-ab67-a1081c4fb89f)
+  ![WhatsApp Image 2025-11-13 at 12 14 30 PM(2)](https://github.com/user-attachments/assets/8fa5f3a6-28c9-48ea-89f0-ccaadb9a7985)
 
 ### Step 2: Create ECS Task Execution Role
 
@@ -99,16 +99,19 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
     --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
    ```
 *Created mine in the AWS console*
-![WhatsApp Image 2025-11-13 at 12 14 30 PM(1)](https://github.com/user-attachments/assets/81d6768d-f14a-4050-9225-ace3e5111b63)
+![WhatsApp Image 2025-11-13 at 12 14 35 PM](https://github.com/user-attachments/assets/1bc16641-6a32-4e80-a17b-34a44682e612)
 
 ### Step 3: Create ECS Task Definition
 
 Why: Task definitions define how your container runs: which image, CPU/memory, port mappings, logging, and network mode.
+![WhatsApp Image 2025-11-13 at 12 14 36 PM](https://github.com/user-attachments/assets/1e6cfb92-46c8-4a19-bc44-4af13953b9fa)
 
 1. Create CloudWatch log group:aws logs create-log-group
    ```
    log-group-name /ecs/${REPO_NAME}
    ```
+   ![WhatsApp Image 2025-11-13 at 12 14 36 PM(1)](https://github.com/user-attachments/assets/32bf5277-2cfa-4296-84e3-e4a3b46fee9d)
+
 2. Task definition JSON (task-definition.json):
    ```
    {
@@ -137,7 +140,8 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    }
    ```
    *Edit the code to fit your account details*
-   ![WhatsApp Image 2025-11-13 at 12 14 30 PM(2)](https://github.com/user-attachments/assets/8fa5f3a6-28c9-48ea-89f0-ccaadb9a7985)
+ 
+![WhatsApp Image 2025-11-13 at 12 14 36 PM(2)](https://github.com/user-attachments/assets/cda74053-0e95-4c69-ac85-b65ee5a92b8a)
 
 4. Register the task definition:
    ```
