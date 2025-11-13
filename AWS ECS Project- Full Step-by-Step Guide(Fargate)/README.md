@@ -74,8 +74,7 @@ aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
    docker tag ${REPO_NAME}:${IMAGE_TAG} ${ECR_URI}
    docker push ${ECR_URI}
    ```
-  ![WhatsApp Image 2025-11-13 at 12 14 30 PM(2)](https://github.com/user-attachments/assets/8fa5f3a6-28c9-48ea-89f0-ccaadb9a7985)
-![WhatsApp Image 2025-11-13 at 12 14 31 PM](https://github.com/user-attachments/assets/8ae21f7f-9370-408f-ac6f-e96f578f19c7)
+ ![WhatsApp Image 2025-11-13 at 12 14 30 PM(3)](https://github.com/user-attachments/assets/75cc21e6-ec4d-4723-8729-5fc51dc9af24)
 
 ### Step 2: Create ECS Task Execution Role
 
