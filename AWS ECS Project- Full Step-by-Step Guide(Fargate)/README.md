@@ -99,12 +99,13 @@ Why: Fargate tasks need permissions to pull images from ECR and write logs to Cl
     --policy-arn arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
    ```
 *Created mine in the AWS console*
+![WhatsApp Image 2025-11-13 at 12 14 36 PM(2)](https://github.com/user-attachments/assets/cda74053-0e95-4c69-ac85-b65ee5a92b8a)
+
 ![WhatsApp Image 2025-11-13 at 12 14 35 PM](https://github.com/user-attachments/assets/1bc16641-6a32-4e80-a17b-34a44682e612)
 
 ### Step 3: Create ECS Task Definition
 
 Why: Task definitions define how your container runs: which image, CPU/memory, port mappings, logging, and network mode.
-![WhatsApp Image 2025-11-13 at 12 14 36 PM](https://github.com/user-attachments/assets/1e6cfb92-46c8-4a19-bc44-4af13953b9fa)
 
 1. Create CloudWatch log group:aws logs create-log-group
    ```
@@ -141,8 +142,6 @@ Why: Task definitions define how your container runs: which image, CPU/memory, p
    ```
    *Edit the code to fit your account details*
  
-![WhatsApp Image 2025-11-13 at 12 14 36 PM(2)](https://github.com/user-attachments/assets/cda74053-0e95-4c69-ac85-b65ee5a92b8a)
-
 4. Register the task definition:
    ```
    aws ecs register-task-definition --cli-input-json file://task-definition.json
@@ -190,6 +189,8 @@ aws ecs list-tasks --cluster ${CLUSTER_NAME} --service-name ${SERVICE_NAME}
  
 - View logs in CloudWatch ``` /ecs/my-app```
   ![WhatsApp Image 2025-11-13 at 12 14 34 PM](https://github.com/user-attachments/assets/e767a343-8ce3-4e2e-b723-47c2e52ce613)
+
+![WhatsApp Image 2025-11-13 at 12 14 36 PM](https://github.com/user-attachments/assets/1e6cfb92-46c8-4a19-bc44-4af13953b9fa)
 
 
 ### Step 7: Test Task Replacement
