@@ -58,6 +58,8 @@ CLI Steps
 ```
 aws ecr create-repository --repository-name ${REPO_NAME} --region ${AWS_REGION}
 ```
+![WhatsApp Image 2025-11-13 at 12 12 01 PM](https://github.com/user-attachments/assets/1f66676c-bf2e-483c-8088-c9a74e2132a0)
+
 
 2. Authenticate Docker with ECR:
    ```
