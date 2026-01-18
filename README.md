@@ -1,4 +1,3 @@
-# My-Cloud-projects
 Practical cloud engineering projects leveraging AWS ( From Beginner to Advanced).
 
 # 1. AWS Billing Alerts Project
